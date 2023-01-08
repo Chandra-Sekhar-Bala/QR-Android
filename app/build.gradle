@@ -46,4 +46,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     // splashscreen
     implementation 'androidx.core:core-splashscreen:1.0.0-alpha01'
+    // QR read and generator
+    implementation 'com.github.androidmads:QRGenerator:1.0.1'
 }

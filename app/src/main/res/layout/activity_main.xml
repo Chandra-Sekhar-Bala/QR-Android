@@ -6,13 +6,35 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
+    <Button
+        android:id="@+id/generate_qr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:layout_marginBottom="18dp"
+        android:background="@drawable/btn_bakground"
+        android:fontFamily="monospace"
+        android:padding="10dp"
+        android:inputType="none"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:text="Generate QR"
+        app:layout_constraintBottom_toTopOf="@+id/scan_rq"
+        app:layout_constraintEnd_toEndOf="@+id/scan_rq"
+        app:layout_constraintStart_toStartOf="@+id/scan_rq" />
+
+    <Button
+        android:id="@+id/scan_rq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="312dp"
+        android:background="@drawable/btn_bakground"
+        android:fontFamily="monospace"
+        android:inputType="none"
+        android:padding="10dp"
+        android:text="Scan QR"
+        android:textAllCaps="false"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

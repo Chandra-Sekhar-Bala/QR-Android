@@ -11,6 +11,7 @@ import codes.chandrasekhar.qrscanner.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private val permission : Array<String> = arrayOf(
+        android.Manifest.permission.READ_EXTERNAL_STORAGE,
         android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
         android.Manifest.permission.CAMERA)
 
@@ -26,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         registerForPermission.launch(permission)
         binding.generateQr.setOnClickListener{
-            startActivity(Intent(this@MainActivity, GenerateQR::class.java))
+//            startActivity(Intent(this@MainActivity, GenerateQR::class.java))
         }
     }
     private val registerForPermission = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()){ it ->

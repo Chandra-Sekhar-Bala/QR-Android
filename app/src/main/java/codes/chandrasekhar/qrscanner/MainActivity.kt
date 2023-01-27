@@ -27,13 +27,13 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         registerForPermission.launch(permission)
         binding.generateQr.setOnClickListener{
-//            startActivity(Intent(this@MainActivity, GenerateQR::class.java))
+            startActivity(Intent(this@MainActivity, GenerateQR::class.java))
         }
     }
     private val registerForPermission = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()){ it ->
         if(!it.entries.all { it.value }){
-            Toast.makeText(this@MainActivity, "Need permission to use this app", Toast.LENGTH_SHORT).show()
-            finishAffinity()
+            Toast.makeText(this@MainActivity, "Go to setting and grant permission to use this app", Toast.LENGTH_SHORT).show()
+            finish()
         }
     }
 }

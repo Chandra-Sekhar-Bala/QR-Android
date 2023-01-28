@@ -29,6 +29,9 @@ class MainActivity : AppCompatActivity() {
         binding.generateQr.setOnClickListener{
             startActivity(Intent(this@MainActivity, GenerateQR::class.java))
         }
+        binding.scanQr.setOnClickListener{
+            startActivity(Intent(this@MainActivity, ScanQR::class.java))
+        }
     }
     private val registerForPermission = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()){ it ->
         if(!it.entries.all { it.value }){

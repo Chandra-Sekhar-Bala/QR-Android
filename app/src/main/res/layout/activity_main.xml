@@ -18,12 +18,12 @@
         android:textAllCaps="false"
         android:textSize="25sp"
         android:text="Generate QR"
-        app:layout_constraintBottom_toTopOf="@+id/scan_rq"
-        app:layout_constraintEnd_toEndOf="@+id/scan_rq"
-        app:layout_constraintStart_toStartOf="@+id/scan_rq" />
+        app:layout_constraintBottom_toTopOf="@+id/scan_qr"
+        app:layout_constraintEnd_toEndOf="@+id/scan_qr"
+        app:layout_constraintStart_toStartOf="@+id/scan_qr" />
 
     <Button
-        android:id="@+id/scan_rq"
+        android:id="@+id/scan_qr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="312dp"

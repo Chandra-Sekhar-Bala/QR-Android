@@ -18,6 +18,10 @@ import androidmads.library.qrgenearator.QRGEncoder
 import androidmads.library.qrgenearator.QRGSaver
 import androidx.appcompat.app.AppCompatActivity
 import codes.chandrasekhar.qrscanner.databinding.ActivityGenerateQrBinding
+import java.io.File
+import java.io.FileOutputStream
+import java.sql.Time
+import java.time.Clock
 
 
 class GenerateQR : AppCompatActivity() {
@@ -69,18 +73,24 @@ class GenerateQR : AppCompatActivity() {
             }
         }
     }
+
     private fun saveQR() {
         // Save with location, value, bitmap returned and type of Image(JPG/PNG).
         if (isValid()) {
             try {
-                val save = QRGSaver().save(
+                val file = File(
                     savePath,
-                    binding.generateText.text.toString().trim(),
-                    bitmap,
-                    QRGContents.ImageType.IMAGE_JPEG
+                    "${binding.generateText.text.toString().trim().replace(" ", "_")}.jpeg"
                 )
-                val result = if (save) "Image Saved" else "Image Not Saved"
-                toastMessage(result)
+                val out = FileOutputStream(file)
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out)
+                out.flush()
+                out.close()
+                if (file.exists()) {
+                    toastMessage("Image Saved at: ${file.absolutePath}")
+                } else {
+                    toastMessage("Cannot save the image")
+                }
                 binding.generateText.text = null
             } catch (e: java.lang.Exception) {
                 e.message?.let { toastMessage(it) }
@@ -90,8 +100,9 @@ class GenerateQR : AppCompatActivity() {
             toastMessage("Generate QR  first")
         }
     }
+
     private fun toastMessage(msg: String) {
-        Toast.makeText(this@GenerateQR,msg, Toast.LENGTH_LONG).show()
+        Toast.makeText(this@GenerateQR, msg, Toast.LENGTH_LONG).show()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
